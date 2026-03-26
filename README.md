@@ -324,3 +324,5 @@ For issues, questions, or suggestions:
 **Made with ❤️ for travelers worldwide**
 
 Last updated: March 2026
+#   G l o b a l - T r a v e l - a d v i s o r y  
+ 
