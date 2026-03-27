@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, LayoutDashboard, Menu, X } from 'lucide-react';
-import { slideInDown } from '../utils/animations';
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -18,7 +17,7 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-black/95 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 lg:px-20 border-b border-yellow-500/20 shadow-lg shadow-black/50"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-surface/95 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 lg:px-20 border-b border-border shadow-md"
       >
       <div className="flex items-center gap-3">
         {isDestinationPage && (
@@ -26,7 +25,7 @@ export default function Navbar() {
             onClick={() => navigate('/')}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="mr-2 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+            className="mr-2 p-2 hover:bg-surface-2 rounded-lg transition-colors"
             title="Back to home"
           >
             <span className="material-symbols-outlined">arrow_back</span>
@@ -39,10 +38,10 @@ export default function Navbar() {
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           title="Go to home"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-yellow-500 text-black">
-            <span className="material-symbols-outlined text-xl">public</span>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white font-bold">
+            G
           </div>
-          <h2 className="text-lg font-bold tracking-tight text-yellow-400 hidden sm:block">Global SafeTravel</h2>
+          <h2 className="text-lg font-bold tracking-tight text-text-primary hidden sm:block">Global SafeTravel</h2>
         </motion.button>
       </div>
 
@@ -61,15 +60,14 @@ export default function Navbar() {
               onClick={() => navigate(item.path)}
               className={`text-sm font-medium relative group transition-colors ${
                 isActive
-                  ? 'text-yellow-400'
-                  : 'text-slate-400 hover:text-yellow-400'
+                  ? 'text-primary'
+                  : 'text-text-secondary hover:text-primary'
               }`}
-              whileHover={{ color: '#0b50da' }}
               transition={{ duration: 0.2 }}
             >
               {item.label}
               <motion.div
-                className="absolute bottom-0 left-0 h-0.5 bg-yellow-400"
+                className="absolute bottom-0 left-0 h-0.5 bg-primary"
                 initial={{ width: 0 }}
                 animate={{ width: isActive ? '100%' : 0 }}
                 whileHover={{ width: '100%' }}
@@ -86,7 +84,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="md:hidden p-2 text-slate-400 hover:text-yellow-400 transition-colors"
+          className="md:hidden p-2 text-text-secondary hover:text-primary transition-colors"
           title="Toggle menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,7 +94,7 @@ export default function Navbar() {
             <motion.button
               onClick={() => navigate('/dashboard')}
               whileHover={{ scale: 1.05 }}
-              className="hidden md:flex items-center gap-2 text-sm font-semibold text-yellow-400 hover:text-yellow-300 transition-colors"
+              className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors"
             >
               <LayoutDashboard size={18} />
               Dashboard
@@ -116,7 +114,7 @@ export default function Navbar() {
             onClick={() => openAuthModal('signup')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block rounded-lg bg-yellow-500 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-yellow-500/25 hover:bg-yellow-400 transition-all"
+            className="hidden md:block rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-white hover:bg-primary-dark transition-all"
           >
             Get Started
           </motion.button>
@@ -131,7 +129,7 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="fixed top-16 left-0 right-0 z-[60] md:hidden bg-black/95 backdrop-blur-md border-b border-yellow-500/20 shadow-lg"
+          className="fixed top-16 left-0 right-0 z-[60] md:hidden bg-surface/95 backdrop-blur-md border-b border-border shadow-md"
         >
           <nav className="flex flex-col p-4 space-y-2">
             {[
@@ -151,8 +149,8 @@ export default function Navbar() {
                   }}
                   className={`text-left px-5 py-4 rounded-xl font-semibold text-base transition-colors ${
                     isActive
-                      ? 'bg-yellow-500/20 text-yellow-400'
-                      : 'text-slate-400 hover:bg-slate-800 hover:text-yellow-400'
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-text-secondary hover:bg-surface-2 hover:text-primary'
                   }`}
                   whileHover={{ x: 4 }}
                 >
@@ -160,14 +158,14 @@ export default function Navbar() {
                 </motion.button>
               );
             })}
-            
+
             {isLoggedIn && (
               <motion.button
                 onClick={() => {
                   navigate('/dashboard');
                   setMobileMenuOpen(false);
                 }}
-                className="text-left px-4 py-3 rounded-lg font-medium text-slate-400 hover:bg-slate-800 hover:text-yellow-400 transition-colors flex items-center gap-2"
+                className="text-left px-4 py-3 rounded-lg font-medium text-text-secondary hover:bg-surface-2 hover:text-primary transition-colors flex items-center gap-2"
                 whileHover={{ x: 4 }}
               >
                 <LayoutDashboard size={18} />
@@ -176,7 +174,7 @@ export default function Navbar() {
             )}
 
             {/* Divider */}
-            {!isLoggedIn && <div className="my-2 border-t border-slate-700" />}
+            {!isLoggedIn && <div className="my-2 border-t border-border" />}
 
             {/* Auth Buttons in Mobile Menu */}
             {isLoggedIn ? (
@@ -186,7 +184,7 @@ export default function Navbar() {
                   navigate('/');
                   setMobileMenuOpen(false);
                 }}
-                className="text-left px-4 py-3 rounded-lg font-medium text-slate-400 hover:bg-red-600/20 hover:text-red-400 transition-colors flex items-center gap-2 mt-2"
+                className="text-left px-4 py-3 rounded-lg font-medium text-text-secondary hover:bg-red-600/20 hover:text-red-400 transition-colors flex items-center gap-2 mt-2"
                 whileHover={{ x: 4 }}
               >
                 <LogOut size={18} />
@@ -199,7 +197,7 @@ export default function Navbar() {
                     openAuthModal('login');
                     setMobileMenuOpen(false);
                   }}
-                  className="text-left px-4 py-3 rounded-lg font-medium text-slate-400 hover:bg-slate-800 hover:text-yellow-400 transition-colors"
+                  className="text-left px-4 py-3 rounded-lg font-medium text-text-secondary hover:bg-surface-2 hover:text-primary transition-colors"
                   whileHover={{ x: 4 }}
                 >
                   Log in
@@ -209,7 +207,7 @@ export default function Navbar() {
                     openAuthModal('signup');
                     setMobileMenuOpen(false);
                   }}
-                  className="px-4 py-3 rounded-lg font-bold text-black bg-yellow-500 hover:bg-yellow-400 transition-all mt-2"
+                  className="px-4 py-3 rounded-lg font-bold text-white bg-primary hover:bg-primary-dark transition-all mt-2"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

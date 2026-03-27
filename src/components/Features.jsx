@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { fadeInUp, floatingAnimation, rotateAnimation } from '../utils/animations';
 import mapImage from '../pictures/map.jpg';
 
 const features = [
@@ -22,7 +21,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24 bg-black" id="features">
+    <section className="py-24 bg-background" id="features">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -31,7 +30,7 @@ export default function Features() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-white">Advanced features for the modern traveler</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-text-primary">Advanced features for the modern traveler</h2>
             <div className="space-y-6">
               {features.map((feature) => (
                 <motion.div
@@ -46,8 +45,8 @@ export default function Features() {
                     <span className="material-symbols-outlined text-xl">{feature.icon}</span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg text-white">{feature.title}</h4>
-                    <p className="text-slate-300 text-sm mt-1">{feature.description}</p>
+                    <h4 className="font-bold text-lg text-text-primary">{feature.title}</h4>
+                    <p className="text-text-secondary text-sm mt-1">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -55,7 +54,7 @@ export default function Features() {
           </motion.div>
 
           <motion.div
-            className="relative bg-primary/5 rounded-3xl p-8 overflow-hidden aspect-square flex items-center justify-center"
+            className="relative bg-surface rounded-2xl p-8 overflow-hidden aspect-square flex items-center justify-center border border-border"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -75,14 +74,14 @@ export default function Features() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="bg-zinc-900 rounded-2xl shadow-2xl p-4 sm:p-6 w-64 sm:w-80 border border-slate-700 transform rotate-3">
+              <div className="bg-surface rounded-2xl shadow-lg p-4 sm:p-6 w-64 sm:w-80 border border-border transform rotate-3">
               <div className="flex justify-between items-center mb-6">
-                <h4 className="font-bold text-white">Safety Index</h4>
-                <span className="bg-emerald-900 text-emerald-300 px-2 py-1 rounded text-xs font-bold uppercase tracking-wider">High Safety</span>
+                <h4 className="font-bold text-text-primary">Safety Index</h4>
+                <span className="bg-green-900/30 text-green-400 px-2 py-1 rounded text-xs font-bold uppercase tracking-wider border border-green-700/30">High Safety</span>
               </div>
 
               <div className="space-y-4">
-                <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-border rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-primary"
                     initial={{ width: 0 }}
@@ -93,10 +92,10 @@ export default function Features() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-700">
-                    <p className="text-[10px] uppercase text-slate-400 font-bold">Health</p>
+                  <div className="p-3 bg-surface-2 rounded-lg border border-border">
+                    <p className="text-[10px] uppercase text-text-tertiary font-bold">Health</p>
                     <motion.p
-                      className="text-lg font-bold text-white"
+                      className="text-lg font-bold text-text-primary"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
@@ -105,10 +104,10 @@ export default function Features() {
                       92/100
                     </motion.p>
                   </div>
-                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-700">
-                    <p className="text-[10px] uppercase text-slate-400 font-bold">Transport</p>
+                  <div className="p-3 bg-surface-2 rounded-lg border border-border">
+                    <p className="text-[10px] uppercase text-text-tertiary font-bold">Transport</p>
                     <motion.p
-                      className="text-lg font-bold text-white"
+                      className="text-lg font-bold text-text-primary"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
