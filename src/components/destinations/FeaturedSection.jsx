@@ -12,11 +12,11 @@ export default function FeaturedSection({ destinations }) {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-1 h-4 bg-gradient-to-b from-primary to-primary/50 rounded-full" />
-          <p className="text-xs font-bold text-primary uppercase tracking-widest">Trending Now</p>
+          <div className="w-1 h-4 bg-primary rounded-full" />
+          <p className="text-xs font-bold text-primary uppercase tracking-widest">Featured</p>
         </div>
-        <h2 className="text-2xl font-bold text-white mb-2">Safe Destinations</h2>
-        <p className="text-sm text-slate-400">Top-rated travel destinations</p>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">Safe Destinations</h2>
+        <p className="text-sm text-text-secondary">Top-rated travel destinations</p>
       </div>
 
       {/* Horizontal Scroll */}

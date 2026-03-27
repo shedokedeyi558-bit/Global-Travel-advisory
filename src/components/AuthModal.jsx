@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { X } from 'lucide-react';
 
 export default function AuthModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
@@ -12,7 +13,6 @@ export default function AuthModal({ isOpen, onClose }) {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  // Update isLogin when modal mode changes
   useEffect(() => {
     setIsLogin(authModalMode === 'login');
   }, [authModalMode]);
@@ -21,14 +21,12 @@ export default function AuthModal({ isOpen, onClose }) {
     e.preventDefault();
     setLoading(true);
 
-    // Simulate auth delay
     setTimeout(() => {
       setEmail('');
       setPassword('');
       setLoading(false);
-      login(); // Set logged in state
+      login();
       onClose();
-      // Navigate to home after login
       navigate('/');
     }, 500);
   };
@@ -57,7 +55,7 @@ export default function AuthModal({ isOpen, onClose }) {
             onClick={onClose}
           >
             <motion.div
-              className="w-full max-w-sm bg-zinc-900 border border-yellow-500/30 rounded-xl shadow-2xl shadow-yellow-500/10 p-6 relative"
+              className="w-full max-w-sm bg-surface border border-border rounded-xl shadow-lg p-6 relative"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -65,9 +63,9 @@ export default function AuthModal({ isOpen, onClose }) {
                 onClick={onClose}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="absolute top-3 right-3 p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                className="absolute top-3 right-3 p-1.5 hover:bg-surface-2 rounded-lg transition-colors"
               >
-                <span className="material-symbols-outlined text-xl">close</span>
+                <X size={20} className="text-text-secondary" />
               </motion.button>
 
               {/* Header */}
@@ -77,13 +75,13 @@ export default function AuthModal({ isOpen, onClose }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="w-12 h-12 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <span className="material-symbols-outlined text-2xl text-yellow-400">lock</span>
+                <div className="w-12 h-12 bg-primary/10 border border-primary/30 rounded-lg flex items-center justify-center mx-auto mb-3">
+                  <span className="material-symbols-outlined text-2xl text-primary">lock</span>
                 </div>
-                <h1 className="text-2xl font-bold mb-1 text-white">
+                <h1 className="text-2xl font-bold mb-1 text-text-primary">
                   {isLogin ? 'Welcome Back' : 'Create Account'}
                 </h1>
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-text-secondary">
                   {isLogin ? 'Sign in to your account' : 'Join Global SafeTravel'}
                 </p>
               </motion.div>
@@ -95,12 +93,12 @@ export default function AuthModal({ isOpen, onClose }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <label className="block text-xs font-semibold mb-1.5 text-slate-300">Email</label>
+                  <label className="block text-xs font-semibold mb-1.5 text-text-secondary">Email</label>
                   <motion.input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-yellow-500/30 bg-black text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-slate-600"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-surface-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary placeholder-text-tertiary"
                     placeholder="your@email.com"
                     required
                     whileFocus={{ scale: 1.02 }}
@@ -112,12 +110,12 @@ export default function AuthModal({ isOpen, onClose }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label className="block text-xs font-semibold mb-1.5 text-slate-300">Password</label>
+                  <label className="block text-xs font-semibold mb-1.5 text-text-secondary">Password</label>
                   <motion.input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-yellow-500/30 bg-black text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 placeholder-slate-600"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-border bg-surface-2 text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary placeholder-text-tertiary"
                     placeholder="••••••••"
                     required
                     whileFocus={{ scale: 1.02 }}
@@ -142,7 +140,7 @@ export default function AuthModal({ isOpen, onClose }) {
                   disabled={loading}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-yellow-500 text-black font-bold py-2 text-sm rounded-lg hover:bg-yellow-400 transition-all mt-4 disabled:opacity-50"
+                  className="w-full bg-primary text-white font-bold py-2 text-sm rounded-lg hover:bg-primary-dark transition-all mt-4 disabled:opacity-50"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
@@ -158,7 +156,7 @@ export default function AuthModal({ isOpen, onClose }) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-text-secondary">
                   {isLogin ? "Don't have an account? " : 'Already have an account? '}
                   <button
                     onClick={() => {
@@ -173,18 +171,18 @@ export default function AuthModal({ isOpen, onClose }) {
 
               {/* Social Login */}
               <motion.div
-                className="mt-4 pt-4 border-t border-yellow-500/20"
+                className="mt-4 pt-4 border-t border-border"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
               >
-                <p className="text-center text-xs text-slate-300 mb-3">Or continue with</p>
+                <p className="text-center text-xs text-text-secondary mb-3">Or continue with</p>
                 <div className="flex gap-3">
                   {['Google', 'GitHub'].map((provider) => (
                     <motion.button
                       key={provider}
                       whileHover={{ scale: 1.05 }}
-                      className="flex-1 py-1.5 text-xs rounded-lg border border-yellow-500/30 text-slate-300 hover:bg-yellow-500/10 hover:text-yellow-400 transition-colors"
+                      className="flex-1 py-1.5 text-xs rounded-lg border border-border text-text-secondary hover:bg-surface-2 hover:text-primary transition-colors"
                     >
                       {provider}
                     </motion.button>
