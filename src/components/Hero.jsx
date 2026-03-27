@@ -39,7 +39,7 @@ export default function Hero() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           zIndex: -2,
-          opacity: imageLoaded ? 0.3 : 0,
+          opacity: imageLoaded ? 0.6 : 0,
           transition: 'opacity 1s ease-in-out'
         }}
       />
@@ -52,7 +52,7 @@ export default function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%)',
+          background: 'linear-gradient(135deg, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.5) 100%)',
           zIndex: -1
         }}
       />
