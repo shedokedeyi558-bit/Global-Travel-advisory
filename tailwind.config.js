@@ -8,17 +8,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary": "#D4AF37",
-        "primary-dark": "#B8960C",
-        "primary-light": "#F0D060",
-        "gold": "#D4AF37",
-        "gold-dark": "#B8960C",
-        "gold-light": "#F0D060",
-        "background-light": "#0a0a0a",
-        "background-dark": "#000000",
-        "surface": "#111111",
-        "surface-2": "#1a1a1a",
-        "border-gold": "#D4AF3730",
+        "primary": "#0b50da",
+        "primary-dark": "#0840b0",
+        "primary-light": "#1a5ef5",
+        "background": "#0f0f0f",
+        "surface": "#1a1a1a",
+        "surface-2": "#242424",
+        "border": "#2a2a2a",
+        "text-primary": "#ffffff",
+        "text-secondary": "#b0b0b0",
+        "text-tertiary": "#808080",
       },
       fontFamily: {
         "display": ["Plus Jakarta Sans"],
